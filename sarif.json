@@ -32,7 +32,7 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "file:///home/runner/work/code-scanning-playground/code-scanning-playground/index.js",
+                  "uri": "main.tf",
                   "index": 0
                 },
                 "region": {
