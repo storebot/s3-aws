@@ -1,32 +1,22 @@
 {
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "version": "2.1.0",
+  "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.4",
   "runs": [
     {
       "tool": {
         "driver": {
-          "name": "",
+          "name": "ESLint",
           "rules": [
             {
-              "id": "AWS.Instance.NetworkSecurity.Medium.0506",
+              "id": "no-unused-vars",
               "shortDescription": {
-                "text": "Instances are Configured under Virtual Private Cloud"
-              },
-              "fullDescription": {
-                "text": "Migrate from EC2 classic to VPCs. 1: Create a VPC. 2: Configure Your Security Group. 3: Create an AMI from Your EC2-Classic Instance. 4: Launch an Instance Into Your VPC. Detailed steps available at:Â http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
+                "text": "disallow unused variables"
               },
               "help": {
-                "text": "help text",
-                "markdown": "help markdown"
+                "text": "https://eslint.org/docs/rules/no-unused-vars"
               },
               "properties": {
-                "tags": [
-                  "Test"
-                ],
-                "precision": "very-high"
+                "category": "VPC"
               }
             }
           ]
@@ -34,22 +24,22 @@
       },
       "results": [
         {
-          "ruleId": "AWS.Instance.NetworkSecurity.Medium.0506",
-          "level": "warning",
+          "ruleId": "no-unused-vars",
           "message": {
-            "text": "Instances are Configured under Virtual Private Cloud"
+            "text": "'x' is assigned a value but never used."
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "https://github.com/williepaul/aws-tf-test/main.tf"
+                  "uri": "file:///home/runner/work/code-scanning-playground/code-scanning-playground/index.js",
+                  "index": 0
                 },
                 "region": {
-                  "startLine": 1,
-                  "startColumn": 1,
-                  "endLine": 1,
-                  "endColumn": 1
+                  "startLine": 5,
+                  "startColumn": 0,
+                  "endLine": 0,
+                  "endColumn": 0
                 }
               },
               "message": {
@@ -57,9 +47,7 @@
               }
             }
           ],
-          "partialFingerprints": {
-            "primaryLocationLineHash": ""
-          }
+          "level": "error"
         }
       ]
     }
