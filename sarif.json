@@ -8,7 +8,7 @@
                                         "name": "accurics",
                                         "rules": [
                                                 {
-                                                        "id": "s3-mfa-delete-enabled",
+                                                        "id": "[HIGH]: S3 bucket should have versioning MFA delete enabled",
                                                         "shortDescription": {
                                                                 "text": "**Vulnerability**\nEnabling MFA delete for versioning is a good way to add extra protection to sensitive files stored in buckets.aws s3api put-bucket-versioning --bucket bucketname --versioning-configuration Status=Enabled,MFADelete=Enabled --mfa your-mfa-serial-number mfa-code\n \n**Remediation**\nUsing the AWS s3api CLI, enable MFA Delete for the S3 buckets that fail this rule, for example: aws s3api put-bucket-versioning --bucket bucketname --versioning-configuration Status=Enabled,MFADelete=Enabled --mfa your-mfa-serial-number mfa-code. Refer to: https://aws.amazon.com/blogs/security/securing-access-to-aws-using-mfa-part-3"
                                                         },
@@ -20,7 +20,7 @@
                                                         }
                                                 },
                                                 {
-                                                        "id": "s3-versioning-enabled",
+                                                        "id": "[HIGH]: S3 bucket should have versioning enabled",
                                                         "shortDescription": {
                                                                 "text": "**Vulnerability**\nEnabling S3 versioning will enable easy recovery from both unintended user actions, like deletes and overwrites\n \n**Remediation**\nS3 bucket should have versioning enabled"
                                                         },
@@ -32,7 +32,7 @@
                                                         }
                                                 },
                                                 {
-                                                        "id": "s3-accessible-all-users",
+                                                        "id": "[HIGH]: S3 bucket accessible to all authenticated users.",
                                                         "shortDescription": {
                                                                 "text": "**Vulnerability**\nS3 bucket Access is allowed to all AWS Account Users.\n \n**Remediation**\nS3 bucket Access should be limited to specific users and roles."
                                                         },
@@ -48,7 +48,7 @@
                         },
                         "results": [
                                 {
-                                        "ruleId": "s3-mfa-delete-enabled",
+                                        "ruleId": "[HIGH]: S3 bucket should have versioning MFA delete enabled",
                                         "message": {
                                                 "text": "**Vulnerability**\nEnabling MFA delete for versioning is a good way to add extra protection to sensitive files stored in buckets.aws s3api put-bucket-versioning --bucket bucketname --versioning-configuration Status=Enabled,MFADelete=Enabled --mfa your-mfa-serial-number mfa-code\n \n**Remediation**\nUsing the AWS s3api CLI, enable MFA Delete for the S3 buckets that fail this rule, for example: aws s3api put-bucket-versioning --bucket bucketname --versioning-configuration Status=Enabled,MFADelete=Enabled --mfa your-mfa-serial-number mfa-code. Refer to: https://aws.amazon.com/blogs/security/securing-access-to-aws-using-mfa-part-3"
                                         },
@@ -69,27 +69,17 @@
                                                         "message": {
                                                                 "text": ""
                                                         }
-                                                }
-                                        ],
-                                        "level": "warning"
-                                },
-                                {
-                                        "ruleId": "s3-versioning-enabled",
-                                        "ruleIndex": 1,
-                                        "message": {
-                                                "text": "**Vulnerability**\nEnabling S3 versioning will enable easy recovery from both unintended user actions, like deletes and overwrites\n \n**Remediation**\nS3 bucket should have versioning enabled"
-                                        },
-                                        "locations": [
+                                                },
                                                 {
                                                         "physicalLocation": {
                                                                 "artifactLocation": {
-                                                                        "uri": "main.tf",
+                                                                        "uri": "s3.tf",
                                                                         "index": 1
                                                                 },
                                                                 "region": {
-                                                                        "startLine": 5,
+                                                                        "startLine": 1,
                                                                         "startColumn": 1,
-                                                                        "endLine": 6,
+                                                                        "endLine": 2,
                                                                         "endColumn": 1
                                                                 }
                                                         },
@@ -101,7 +91,51 @@
                                         "level": "warning"
                                 },
                                 {
-                                        "ruleId": "s3-accessible-all-users",
+                                        "ruleId": "[HIGH]: S3 bucket should have versioning enabled",
+                                        "ruleIndex": 1,
+                                        "message": {
+                                                "text": "**Vulnerability**\nEnabling S3 versioning will enable easy recovery from both unintended user actions, like deletes and overwrites\n \n**Remediation**\nS3 bucket should have versioning enabled"
+                                        },
+                                        "locations": [
+                                                {
+                                                        "physicalLocation": {
+                                                                "artifactLocation": {
+                                                                        "uri": "main.tf",
+                                                                        "index": 0
+                                                                },
+                                                                "region": {
+                                                                        "startLine": 5,
+                                                                        "startColumn": 1,
+                                                                        "endLine": 6,
+                                                                        "endColumn": 1
+                                                                }
+                                                        },
+                                                        "message": {
+                                                                "text": ""
+                                                        }
+                                                },
+                                                {
+                                                        "physicalLocation": {
+                                                                "artifactLocation": {
+                                                                        "uri": "s3.tf",
+                                                                        "index": 1
+                                                                },
+                                                                "region": {
+                                                                        "startLine": 1,
+                                                                        "startColumn": 1,
+                                                                        "endLine": 2,
+                                                                        "endColumn": 1
+                                                                }
+                                                        },
+                                                        "message": {
+                                                                "text": ""
+                                                        }
+                                                }
+                                        ],
+                                        "level": "warning"
+                                },
+                                {
+                                        "ruleId": "[HIGH]: S3 bucket accessible to all authenticated users.",
                                         "ruleIndex": 2,
                                         "message": {
                                                 "text": "**Vulnerability**\nS3 bucket Access is allowed to all AWS Account Users.\n \n**Remediation**\nS3 bucket Access should be limited to specific users and roles."
@@ -111,12 +145,29 @@
                                                         "physicalLocation": {
                                                                 "artifactLocation": {
                                                                         "uri": "main.tf",
-                                                                        "index": 2
+                                                                        "index": 0
                                                                 },
                                                                 "region": {
                                                                         "startLine": 5,
                                                                         "startColumn": 1,
                                                                         "endLine": 6,
+                                                                        "endColumn": 1
+                                                                }
+                                                        },
+                                                        "message": {
+                                                                "text": ""
+                                                        }
+                                                },
+                                                {
+                                                        "physicalLocation": {
+                                                                "artifactLocation": {
+                                                                        "uri": "s3.tf",
+                                                                        "index": 1
+                                                                },
+                                                                "region": {
+                                                                        "startLine": 1,
+                                                                        "startColumn": 1,
+                                                                        "endLine": 2,
                                                                         "endColumn": 1
                                                                 }
                                                         },
