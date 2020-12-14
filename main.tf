@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "demo-s4" {
-  bucket = "demo-s4567"
+  bucket = "demo-s230"
   versioning {
     enabled = false
     mfa_delete = false
